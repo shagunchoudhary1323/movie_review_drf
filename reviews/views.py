@@ -6,7 +6,13 @@ from django.shortcuts import get_object_or_404
 from .models import Review, Movie
 from .serializers import UserSerializer, MovieSerializer, ReviewSerializer
 from .recommendations import RecommendationSystem
+from django.contrib.auth import logout
+from django.views.generic import TemplateView
 from django.db.models import Q
+
+class HomePageView(TemplateView):
+    permission_classes = (AllowAny,)
+    template_name = 'home.html'
 
 class UserRegisterView(APIView):
     permission_classes = (AllowAny,)
@@ -32,8 +38,21 @@ class UserRegisterView(APIView):
             status=status.HTTP_400_BAD_REQUEST,
         )
 
+
+class LogoutView(APIView):
+    def get(self, request):
+        logout(request)
+        return Response(
+            {
+                "status":status.HTTP_200_OK,
+                "message": "Logout successfully",
+            },
+            status=status.HTTP_200_OK,
+        )
+
+
 class MovieRecommendationsView(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         movies = RecommendationSystem.get_recommendations(request.user)
@@ -47,7 +66,7 @@ class MovieRecommendationsView(APIView):
         )
 
 class ReviewListCreateView(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         reviews = Review.objects.all()
@@ -82,7 +101,7 @@ class ReviewListCreateView(APIView):
         )
 
 class ReviewDetailView(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_object(self, pk):
         return get_object_or_404(Review, pk=pk)
@@ -158,6 +177,7 @@ class SearchMovieView(APIView):
                 },
                 status=status.HTTP_404_NOT_FOUND,
             )
+            
 class SearchReviewView(APIView):
     permission_classes = [AllowAny]
 

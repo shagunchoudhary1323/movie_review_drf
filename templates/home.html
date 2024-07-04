@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieReview</title>
+</head>
+<body>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">Movie Review APIs</h1>
+    <h2>Movie review API links:</h2>
+    <ul class="list-disc pl-4">
+      <li><a href="{% url 'register' %}">Register New User</a></li>
+      <li><a href="{% url 'login' %}">Login User</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+      <li><a href="{% url 'recommendations' %}">Recommended Movies</a></li>
+      <li><a href="{% url 'review_list_create' %}">Post / Get Review</a></li>
+      <li><a href="{% url 'search_movie' %}">Search Movies</a></li>
+      <li><a href="{% url 'search_review' %}">Search Reviews</a></li>
+    </ul>
+  </div>
+</body>
+</html>
