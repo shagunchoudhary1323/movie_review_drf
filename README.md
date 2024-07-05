@@ -40,8 +40,13 @@ Based on the user reviews and movie ratings, some movies will be recommended. Us
     python manage.py runserver
 ```
 
-- On postman , we can test our GET and POST api's for meals as well as orders schema. 
+- On postman , we can test our GET and POST api's for meals as well as orders schema.
+  
 #### Here is the Postman collection link:
+
+https://shagunpr7-postman-team.postman.co/workspace/shagunpr7-postman-team-Workspac~398eb2c5-d7d0-453b-8622-455180616853/collection/26163677-52a0ec3a-913e-4739-9f85-b43903ba1e9b?action=share&creator=26163677
+
+This Postman collection includes testing api endpoints.
 
 
 
